@@ -72,6 +72,7 @@ def promotion_image():
                   </body>
                 </html>"""
 
+
 @app.route("/astronaut_selection", methods=['POST', 'GET'])
 def astronaut_selection():
     if request.method == 'GET':
@@ -166,13 +167,46 @@ def astronaut_selection():
                             </html>'''
     elif request.method == 'POST':
         print(request.form['email'])
-        print(request.form['password'])
+        print(request.form['name'])
+        print(request.form['surname'])
         print(request.form['class'])
         print(request.form['file'])
         print(request.form['about'])
         print(request.form['accept'])
         print(request.form['sex'])
         return "Форма отправлена"
+
+
+@app.route("/choice/<planet>")
+def choice_planet(planet):
+    return f"""<!doctype html>
+                <html lang="en">
+                  <head>
+                    <meta charset="utf-8">
+                    <link rel="stylesheet"
+                   href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
+                   integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
+                   crossorigin="anonymous">
+                   <link rel="stylesheet" href="static/css/style.css">
+                    <title>Варианты выбора</title>
+                  </head>
+                  <body>
+                    <h2>Мое предложение: {planet}</h2>
+                    <h4>Эта планета близка к Земле;</h4>
+                    <div class="alert alert-success" role="alert">
+                      <h3>На ней много необходимых ресурсов;</h3>
+                    </div>
+                    <div class="alert alert-secondary" role="alert">
+                      <h3>На ней есть вода и атмосфера;</h3>
+                    </div>
+                    <div class="alert alert-warning" role="alert">
+                      <h3>На ней есть большое магнитное поле;</h3>
+                    </div>
+                    <div class="alert alert-danger" role="alert">
+                      <h3>Наконец, она просто красива!</h3>
+                    </div>
+                  </body>
+                </html>"""
 
 
 if __name__ == "__main__":
